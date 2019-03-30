@@ -11,11 +11,11 @@ package collision;
  */
 public class CollisionDetector {
     public boolean isCollide(Rectangle r1, Rectangle r2){
-        
+        //TEST r1. BUG3 directly return
         int counter1 = 0;
         for(Point pt: r1.getPoints()){
             if(isPointInRectangle(pt, r2)){
-                counter1++;
+                return true;
             }
         }
         

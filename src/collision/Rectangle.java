@@ -34,12 +34,11 @@ public class Rectangle {
     }
     
     public Point [] getPoints(){
-        //BUG2 forgot to return 4 points
         Point [] arrPoints = new Point [] {
             new Point(x,y),
             new Point(x+width-1, y),
-            //new Point(x, y+height-1),
-            //new Point(x+width-1, y+height-1)            
+            new Point(x, y+height-1),
+            new Point(x+width-1, y+height-1)            
         };
         return arrPoints;
     }
