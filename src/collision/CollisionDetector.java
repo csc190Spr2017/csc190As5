@@ -11,12 +11,24 @@ package collision;
  */
 public class CollisionDetector {
     public boolean isCollide(Rectangle r1, Rectangle r2){
-       //calculate the intersection
-       int x1 = Integer.max(r1.x, r2.x);
-       int x2 = Integer.min(r1.x+r1.width-1, r2.x+r2.width-1);
-       int y1 = Integer.max(r1.y, r2.y);
-       int y2 = Integer.min(r1.y + r1.height-1, r2.y + r2.height-1);
-       return x2>=x1 && y2>=y1;
+        
+        int counter1 = 0;
+        for(Point pt: r1.getPoints()){
+            if(isPointInRectangle(pt, r2)){
+                counter1++;
+            }
+        }
+        
+        //TEST r2
+        int counter2 = 0;
+        for(Point pt: r2.getPoints()){
+            if(isPointInRectangle(pt, r1)){
+                counter2++;
+            }
+        }
+        return counter1>0 || counter2>0;
     }
-  
+    protected boolean isPointInRectangle(Point pt, Rectangle r){
+        return pt.x>=r.x && pt.x<r.x+r.width && pt.y>=r.y && pt.y<r.y+r.height;
+    }
 }
